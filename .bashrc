@@ -118,7 +118,7 @@ fi
 
 #Personalization - matheusvir
 
-alias p='python3'
+alias p='python'
 export PATH="$PATH:/home/matheusvir/.local/bin"
 alias gpp='g++ -o temp'
 alias sshp1='ssh -p 2201 virgolino@150.165.85.78'
@@ -132,3 +132,22 @@ printer(){
     cp "$source" "${name}.${ext}"
   done
 }
+
+alias condaa='conda activate base'
+alias condad='conda deactivate'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/matheusvir/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/matheusvir/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/matheusvir/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/matheusvir/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
