@@ -1,0 +1,15 @@
+[/]
+active-screen-edges=true
+enable-autotiling=true
+enable-blur-selected-tilepreview=false
+enable-screen-edges-windows-suggestions=true
+enable-smart-window-border-radius=true
+enable-snap-assistant-windows-suggestions=true
+enable-tiling-system-windows-suggestions=true
+enable-window-border=false
+inner-gaps=uint32 0
+outer-gaps=uint32 0
+selected-layouts=[['Layout 3'], ['Layout 3']]
+top-edge-maximize=false
+window-border-color='rgb(53,132,228)'
+window-border-width=uint32 3

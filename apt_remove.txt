@@ -1,0 +1,1 @@
+sudo apt purge libreoffice-common gnome-games gnome-weather gnome-tour gnome-font-viewer evolution firefox-esr gnome-characters gnome-sound-recorder gnome-contacts gnome-calendar gnome-maps yelp totem showtime --autoremove
