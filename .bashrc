@@ -115,10 +115,10 @@ fi
 #Personalization - matheusvir
 
 alias p='python3'
-export PATH="$PATH:/home/matheusvir/.local/bin"
 alias gpp='g++ -o temp'
 alias sshp1='ssh -p 2201 virgolino@150.165.85.78'
 alias cplus='printer'
+alias lvim="NVIM_APPNAME=lvim nvim"
 
 printer(){
   source="$1"
@@ -132,17 +132,4 @@ printer(){
 alias condaa='conda activate'
 alias condad='conda deactivate'
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/matheusvirgolino/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/matheusvirgolino/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/matheusvirgolino/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/matheusvirgolino/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+export PATH="/home/matheusvirgolino/miniconda3/bin:$PATH"
