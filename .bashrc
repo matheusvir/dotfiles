@@ -118,7 +118,8 @@ alias p='python3'
 alias gpp='g++ -o temp'
 alias sshp1='ssh -p 2201 virgolino@150.165.85.78'
 alias cplus='printer'
-alias lvim="NVIM_APPNAME=lvim nvim"
+alias lvim='NVIM_APPNAME=lvim nvim'
+alias att='sudo apt update && sudo apt upgrade'
 
 printer(){
   source="$1"
