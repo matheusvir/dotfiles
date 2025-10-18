@@ -83,7 +83,7 @@ require("lazy").setup({
     opts = {
       cmdline = {
         enabled = true,
-        view = "cmdline_popup", -- Exibe cmdline como popup centralizado
+        view = "cmdline_popup",
         format = {
           cmdline = { pattern = "^:", icon = "", lang = "vim" },
           search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
@@ -418,10 +418,11 @@ require("lazy").setup({
     end,
   },
 
-  -- Autocompletion
+  -- Autocompletion - CORRIGIDO!
   {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    -- Carrega em múltiplos eventos
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       {
         "L3MON4D3/LuaSnip",
@@ -446,6 +447,7 @@ require("lazy").setup({
 
       require("luasnip.loaders.from_vscode").lazy_load()
 
+      -- Configuração para modo Insert
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -488,6 +490,7 @@ require("lazy").setup({
         },
       })
 
+      -- Configuração para cmdline (:) - IMPORTANTE!
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
@@ -495,9 +498,11 @@ require("lazy").setup({
         }, {
           { name = "cmdline" },
         }),
+        matching = { disallow_symbol_nonprefix_matching = false },
       })
 
-      cmp.setup.cmdline("/", {
+      -- Configuração para busca (/)
+      cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = "buffer" },
