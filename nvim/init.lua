@@ -162,7 +162,7 @@ require("lazy").setup({
     cmd = "Neotree",
     keys = {
       { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
-      { "<leader>o", "<cmd>Neotree focus<cr>", desc = "Focus Explorer" },
+      { "<leader>E", "<cmd>Neotree focus<cr>", desc = "Focus Explorer" },
     },
     opts = {
       filesystem = {
@@ -632,7 +632,7 @@ vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show Diagnostic" })
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Show Diagnostic" })
 
 -- ===========================
 -- AUTOCOMMANDS
