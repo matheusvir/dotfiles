@@ -19,7 +19,7 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "☣" }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
@@ -50,29 +50,34 @@ vim.opt.rtp:prepend(lazypath)
 -- PLUGINS
 -- ===========================
 require("lazy").setup({
-  -- Tema Nord com Polar Night
   {
-    "shaunsingh/nord.nvim",
+    "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.nord_contrast = true
-      vim.g.nord_borders = false
-      vim.g.nord_disable_background = false
-      vim.g.nord_italic = true
-      vim.g.nord_bold = true
-      
-      require("nord").set()
-      
-      vim.api.nvim_set_hl(0, "Normal", { bg = "#000000", fg = "#D8DEE9" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000", fg = "#D8DEE9" })
-      vim.api.nvim_set_hl(0, "NormalNC", { bg = "#000000", fg = "#D8DEE9" })
-      vim.api.nvim_set_hl(0, "SignColumn", { bg = "#000000" })
-      vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#000000", fg = "#000000" })
+      require("cyberdream").setup({
+        transparent = false,
+        italic_comments = true,
+        hide_fillchars = false,
+        borderless_telescope = false,
+        terminal_colors = true,
+        
+        theme = {
+          variant = "default",
+          saturation = 1,
+          highlights = {
+            Normal = { bg = "#000000" },
+            NormalFloat = { bg = "#000000" },
+            NormalNC = { bg = "#000000" },
+            SignColumn = { bg = "#000000" },
+            EndOfBuffer = { bg = "#000000", fg = "#000000" },
+          },
+        },
+      })
+      vim.cmd("colorscheme cyberdream")
     end,
   },
 
-  -- Noice.nvim - UI melhorada com cmdline oculta
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -132,7 +137,6 @@ require("lazy").setup({
     },
   },
 
-  -- Notify para notificações bonitas
   {
     "rcarriga/nvim-notify",
     opts = {
@@ -147,7 +151,6 @@ require("lazy").setup({
     },
   },
 
-  -- Explorador de arquivos
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -173,7 +176,6 @@ require("lazy").setup({
     },
   },
 
-  -- Bufferline para abas
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
@@ -200,14 +202,13 @@ require("lazy").setup({
     },
   },
 
-  -- Statusline
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("lualine").setup({
         options = {
-          theme = "nord",
+          theme = "auto",
           component_separators = "|",
           section_separators = "",
         },
@@ -215,7 +216,6 @@ require("lazy").setup({
     end,
   },
 
-  -- Telescope para busca fuzzy
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
@@ -251,7 +251,6 @@ require("lazy").setup({
     end,
   },
 
-  -- Treesitter para syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -268,7 +267,6 @@ require("lazy").setup({
     end,
   },
 
-  -- Mason para gerenciar LSP servers
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
@@ -301,7 +299,6 @@ require("lazy").setup({
     end,
   },
 
-  -- LSP Config
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -368,7 +365,6 @@ require("lazy").setup({
     end,
   },
 
-  -- Mason LSP Config
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
@@ -381,7 +377,6 @@ require("lazy").setup({
     },
   },
 
-  -- Java LSP (JDTLS)
   {
     "mfussenegger/nvim-jdtls",
     ft = "java",
@@ -418,10 +413,8 @@ require("lazy").setup({
     end,
   },
 
-  -- Autocompletion - CORRIGIDO!
   {
     "hrsh7th/nvim-cmp",
-    -- Carrega em múltiplos eventos
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       {
@@ -447,7 +440,6 @@ require("lazy").setup({
 
       require("luasnip.loaders.from_vscode").lazy_load()
 
-      -- Configuração para modo Insert
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -490,7 +482,6 @@ require("lazy").setup({
         },
       })
 
-      -- Configuração para cmdline (:) - IMPORTANTE!
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
@@ -501,7 +492,6 @@ require("lazy").setup({
         matching = { disallow_symbol_nonprefix_matching = false },
       })
 
-      -- Configuração para busca (/)
       cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
@@ -511,20 +501,17 @@ require("lazy").setup({
     end,
   },
 
-  -- Autopairs
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     opts = {},
   },
 
-  -- Comentários
   {
     "numToStr/Comment.nvim",
     opts = {},
   },
 
-  -- Indentação visual
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
@@ -540,7 +527,6 @@ require("lazy").setup({
     },
   },
 
-  -- Which-key para mostrar atalhos
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
@@ -556,7 +542,6 @@ require("lazy").setup({
     end,
   },
 
-  -- Gitsigns
   {
     "lewis6991/gitsigns.nvim",
     opts = {
@@ -570,7 +555,6 @@ require("lazy").setup({
     },
   },
 
-  -- Todo comments
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
