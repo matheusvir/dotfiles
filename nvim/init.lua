@@ -29,6 +29,7 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
+vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 -- ===========================
 -- INSTALAÇÃO DO LAZY.NVIM
@@ -71,6 +72,8 @@ require("lazy").setup({
             NormalNC = { bg = "#000000" },
             SignColumn = { bg = "#000000" },
             EndOfBuffer = { bg = "#000000", fg = "#000000" },
+            Cursor = { fg = "#000000", bg = "#ffffff" },
+            lCursor = { fg = "#000000", bg = "#ffffff" },
           },
         },
       })
