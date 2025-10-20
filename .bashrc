@@ -119,7 +119,8 @@ alias gpp='g++ -o temp'
 alias cplus='printer'
 alias ibeam='echo -e "\033[6 q"'
 alias att='sudo apt update && sudo apt upgrade'
-
+alias j='java'
+alias jc='javac'
 
 printer(){
   source="$1"
