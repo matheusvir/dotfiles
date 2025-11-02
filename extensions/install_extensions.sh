@@ -5,7 +5,7 @@ pip3 install --upgrade gnome-extensions-cli
 
 LIST="extensions_list.txt"
 CONF="extensions_settings.dconf"
-ENABLED="extensions_enable.txt"
+ENABLED="extensions_enabled.txt"
 
 if [! -f "$LIST"]; then
     exit 1
@@ -22,3 +22,5 @@ fi
 if [-f "$ENABLED"]; then
     gsettings set org.gnome.shell enabled-extensions "(cat "$ENABLED")"
 fi
+
+echo "Process complete! Restart GNOME Shell (Alt+F2, 'r', Enter) or log out."
