@@ -1,0 +1,1 @@
+['blurt@quantiusbenignus.local', 'dash-to-dock@micxgx.gmail.com', 'clipboard-history@alexsaveau.dev', 'blur-my-shell@aunetx', 'just-perfection-desktop@just-perfection', 'tilingshell@ferrarodomenico.com', 'desktop-cube@schneegans.github.com', 'no-overview@fthx', 'noannoyance-fork@vrba.dev', 'AlphabeticalAppGrid@stuarthayhurst', 'search-light@icedman.github.com']
