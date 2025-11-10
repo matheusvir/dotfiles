@@ -112,8 +112,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #Personalization - matheusvir
 
+# Alias
+#------------------------------------------------------------
 alias p='python3'
 alias gpp='g++ -o temp'
 alias cplus='printer'
@@ -121,7 +124,11 @@ alias ibeam='echo -e "\033[6 q"'
 alias att='sudo apt update && sudo apt upgrade'
 alias j='java'
 alias jc='javac'
-
+alias condaa='conda activate'
+alias condad='conda deactivate'
+#------------------------------------------------------------
+# CPlus
+#------------------------------------------------------------
 printer(){
   source="$1"
   shift
@@ -130,15 +137,60 @@ printer(){
     cp "$source" "${name}.${ext}"
   done
 }
+#------------------------------------------------------------
+# PATH dedup
+#------------------------------------------------------------
+path_dedup() {
+    local old_path=":$PATH:"
+    local new_path=""
+    while [ -n "$old_path" ]; do
+        local entry="${old_path%%:*}"
+        old_path="${old_path#*:}"
 
-alias condaa='conda activate'
-alias condad='conda deactivate'
+        if [ -n "$entry" ]; then
+            case ":$new_path:" in
+                *":$entry:"*) ;;
+                *)
+                    if [ -z "$new_path" ]; then
+                        new_path="$entry"
+                    else
+                        new_path="$new_path:$entry"
+                    fi
+                    ;;
+            esac
+        fi
+    done
+    export PATH="$new_path"
+}
 
-export PATH="/home/matheusvirgolino/miniconda3/bin:$PATH"
+path_dedup
+unset -f path_dedup
+#------------------------------------------------------------
+# Softwares exports
+#------------------------------------------------------------
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-eval "$(starship init bash)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/matheusvirgolino/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/matheusvirgolino/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/matheusvirgolino/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/matheusvirgolino/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+#------------------------------------------------------------
