@@ -135,3 +135,10 @@ alias condaa='conda activate'
 alias condad='conda deactivate'
 
 export PATH="/home/matheusvirgolino/miniconda3/bin:$PATH"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+eval "$(starship init bash)"
