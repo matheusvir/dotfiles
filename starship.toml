@@ -1,0 +1,153 @@
+add_newline = true
+
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$fossil_branch\
+$fossil_metrics\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$hg_state\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$fortran\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$nats\
+$direnv\
+$env_var\
+$mise\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$container\
+$netns\
+$shell\
+$character"""
+
+# ============================================
+# MÓDULO CONDA - CONFIGURAÇÃO PERSONALIZADA
+# ============================================
+[conda]
+ignore_base = false
+truncation_length = 1
+symbol = "🅒 "
+style = "bold green"
+format = "via [$symbol$environment]($style) "
+detect_env_vars = ["!PIXI_ENVIRONMENT_NAME"]
+
+# ============================================
+# MÓDULO CONTAINER - CONFIGURAÇÃO DESTACADA
+# ============================================
+[container]
+symbol = "⬢"
+style = "bold red dimmed"
+format = "[$symbol \\[$name\\]]($style) "
+disabled = false
+
+# ============================================
+# CUSTOMIZAÇÕES ADICIONAIS
+# ============================================
+
+# Configuração do diretório (mantém o padrão do Starship)
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold cyan"
+
+# Configuração do caractere de prompt
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+# Git branch
+[git_branch]
+symbol = " "
+style = "bold purple"
+
+# Git status
+[git_status]
+style = "bold red"
+
+# Duração de comandos (só mostra se demorar mais de 2 segundos)
+[cmd_duration]
+min_time = 2_000
+format = "took [$duration]($style) "
+style = "bold yellow"
+
+# Python
+[python]
+symbol = "🐍 "
+style = "yellow"
+format = "via [${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"

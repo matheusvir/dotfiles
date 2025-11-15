@@ -1,4 +1,5 @@
-theme = Synthwave
+theme = One Half Dark
 font-family = Jetbrains Mono
 cursor-style = bar
 cursor-color = #FFFFFF
+bell-features = no-audio
