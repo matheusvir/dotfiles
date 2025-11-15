@@ -51,31 +51,32 @@ vim.opt.rtp:prepend(lazypath)
 -- ===========================
 require("lazy").setup({
     {
-        "scottmckendry/cyberdream.nvim",
+        "navarasu/onedark.nvim",
         lazy = false,
         priority = 1000,
         config = function()
-            require("cyberdream").setup({
+            require("onedark").setup({
                 transparent = false,
-                italic_comments = true,
-                hide_fillchars = false,
-                borderless_telescope = false,
-                terminal_colors = true,
+                style = 'warmer',
 
-                theme = {
-                    variant = "default",
-                    saturation = 1,
-                    highlights = {
-                        Normal = { bg = "#000000" },
-                        NormalFloat = { bg = "#000000" },
-                        NormalNC = { bg = "#000000" },
-                        SignColumn = { bg = "#000000" },
-                        EndOfBuffer = { bg = "#000000", fg = "#000000" },
-                    },
+                code_style = {
+                    comments = 'italic',
+                    keywords = 'none',
+                    functions = 'none',
+                    strings = 'none',
+                    variables = 'none'
                 },
+
+                colors = {
+
+                },
+
+                highlights = {
+
+                }
             })
-            vim.cmd("colorscheme cyberdream")
-        end,
+            require("onedark").load()
+        end
     },
 
     {
