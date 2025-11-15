@@ -166,21 +166,6 @@ path_dedup() {
 path_dedup
 unset -f path_dedup
 #------------------------------------------------------------
-# bashrc logic
-#------------------------------------------------------------
-if [ -n "$CONTAINER_ID" ]; then
-    case "$DISTROBOX_NAME" in
-        "ubuntuDev")
-            source ~/.bashrc_ubuntuDev
-            ;;
-        "archAUR")
-            source ~/.bashrc_archAUR
-            ;;
-    esac
-else
-    source ~/.bashrc
-fi
-#------------------------------------------------------------
 # Softwares exports
 #------------------------------------------------------------
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
