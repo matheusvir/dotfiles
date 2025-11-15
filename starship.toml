@@ -105,8 +105,8 @@ truncation_length = 1
 symbol = "🅒 "
 style = "bold green"
 format = "via [$symbol$environment]($style) "
-detect_env_vars = ["!PIXI_ENVIRONMENT_NAME"]
-
+detect_extensions = ["yml"]
+detect_files = ["environment.yml", "environment.yaml"]
 # ============================================
 # MÓDULO CONTAINER - CONFIGURAÇÃO DESTACADA
 # ============================================
@@ -120,10 +120,11 @@ disabled = false
 # CUSTOMIZAÇÕES ADICIONAIS
 # ============================================
 
-# Configuração do diretório (mantém o padrão do Starship)
+# Configuração do diretório
 [directory]
-truncation_length = 3
-truncate_to_repo = true
+truncation_length = 5
+truncate_to_repo = false
+fish_style_pwd_dir_length = 1
 style = "bold cyan"
 
 # Configuração do caractere de prompt
@@ -151,3 +152,9 @@ style = "bold yellow"
 symbol = "🐍 "
 style = "yellow"
 format = "via [${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
+
+# Java
+[java]
+symbol = "☕"
+style = "bold bright-red"
+format = "via [${symbol}(${version} )]($style)"
