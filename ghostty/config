@@ -1,4 +1,4 @@
-theme = One Half Dark
+background = "#000000"
 font-family = Jetbrains Mono
 cursor-style = bar
 cursor-color = #FFFFFF
