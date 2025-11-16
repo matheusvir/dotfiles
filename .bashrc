@@ -166,21 +166,6 @@ path_dedup() {
 path_dedup
 unset -f path_dedup
 #------------------------------------------------------------
-# bashrc logic
-#------------------------------------------------------------
-if [ -n "$CONTAINER_ID" ]; then
-    case "$DISTROBOX_NAME" in
-        "ubuntuDev")
-            source ~/.bashrc_ubuntuDev
-            ;;
-        "archAUR")
-            source ~/.bashrc_archAUR
-            ;;
-    esac
-else
-    source ~/.bashrc
-fi
-#------------------------------------------------------------
 # Softwares exports
 #------------------------------------------------------------
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
@@ -208,4 +193,19 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
 #------------------------------------------------------------
+# STARSHIP
+#------------------------------------------------------------
+if command -v /usr/bin/starship >/dev/null 2>&1; then
+    eval "$(/usr/bin/starship init bash)"
+elif command -v starship >/dev/null 2>&1; then
+    eval "$(starship init bash)"
+fi
+
+#------------------------------------------------------------
+# Auto start tmux
+#------------------------------------------------------------
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
